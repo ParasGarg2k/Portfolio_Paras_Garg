@@ -249,6 +249,7 @@ export default function Portfolio() {
   const [educationRef, educationInView] = useInView()
   const [experienceRef, experienceInView] = useInView()
   const [projectsRef, projectsInView] = useInView()
+  const [testimonialRef, testimonialInView] = useInView()
   const [skillsRef, skillsInView] = useInView()
   const [funFactsRef, funFactsInView] = useInView()
   const [contactRef, contactInView] = useInView()
@@ -927,6 +928,73 @@ export default function Portfolio() {
           </div>
         </div>
       </section>
+
+      <section id="testimonials" className="py-12 sm:py-20 px-4 bg-slate-800/30 relative">
+  <div ref={testimonialRef} className="container mx-auto">
+    <div
+      className={`text-center mb-12 sm:mb-16 transition-all duration-1000 ${
+        testimonialInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+      }`}
+    >
+      <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4 bg-gradient-to-r from-emerald-400 to-green-400 bg-clip-text text-transparent">
+        Competitive Profiles
+      </h2>
+      <div className="w-16 sm:w-24 h-1 bg-gradient-to-r from-emerald-400 to-green-400 mx-auto rounded-full" />
+    </div>
+
+    <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8 max-w-5xl mx-auto">
+      {[
+        {
+          name: "LeetCode",
+          badge: "Knight",
+          achievement: "Consistent top 10% problem solver with strong algorithm skills.",
+          ranking: "Global Rank: 1200",
+          image: "https://upload.wikimedia.org/wikipedia/commons/1/19/LeetCode_logo_black.png",
+        },
+        {
+          name: "Codeforces",
+          badge: "Pupil",
+          achievement: "Active participant with solid problem solving and rating growth.",
+          ranking: "Rating: 1350",
+          image: "https://i.pinimg.com/736x/b4/6e/54/b46e546a3ee4d410f961e81d4a8cae0f.jpg",
+        },
+        {
+          name: "CodeChef",
+          badge: "3*",
+          achievement: "Achieved 3-star rating with steady performance in contests.",
+          ranking: "Rating: 1650",
+          image: "https://static.startuptalky.com/2021/04/codechef-logo-startuptalky.jpg",
+        },
+      ].map((profile, index) => (
+        <Card
+          key={profile.name}
+          className={`bg-slate-800/50 border-emerald-500/20 hover:border-emerald-400/40 transition-all duration-500 transform hover:scale-105 hover:shadow-2xl hover:shadow-emerald-500/20 group ${
+            testimonialInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+          }`}
+          style={{ transitionDelay: `${index * 0.2}s` }}
+        >
+          <CardContent className="p-6">
+            <div className="flex items-center mb-4">
+              <img
+                src={profile.image || "/placeholder.svg"}
+                alt={`${profile.name} logo`}
+                className="w-12 h-12 rounded-full mr-4 object-contain bg-white p-1"
+              />
+              <div>
+                <div className="text-white font-semibold">
+                  {profile.name} <span className="text-emerald-400 font-bold">({profile.badge})</span>
+                </div>
+                <div className="text-gray-400 text-sm">{profile.ranking}</div>
+              </div>
+            </div>
+            <div className="text-gray-300 leading-relaxed">{profile.achievement}</div>
+          </CardContent>
+        </Card>
+      ))}
+    </div>
+  </div>
+</section>
+
 
 
       <section id="projects" className="py-12 sm:py-20 px-4 bg-slate-800/30 relative">
